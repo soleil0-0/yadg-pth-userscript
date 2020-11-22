@@ -21,6 +21,9 @@
 // @include        http*://*dicmusic.club/upload.php*
 // @include        http*://*dicmusic.club/requests.php*
 // @include        http*://*dicmusic.club/torrents.php*
+// @include        http*://x3078z8898.zicp.vip:7480/upload.php*
+// @include        http*://x3078z8898.zicp.vip:7480/requests.php*
+// @include        http*://x3078z8898.zicp.vip:7480/torrents.php*
 // @include        http*://*waffles.ch/upload.php*
 // @include        http*://*waffles.ch/requests.php*
 // @include        http*://*d3si.net/upload.php*
@@ -911,6 +914,26 @@ factory = {
 			regex: /http(s)?:\/\/(.*\.)?dicmusic\.club\/torrents\.php\?id=.*/i
 		},
 		{
+			name: 'dictest_upload',
+			regex: /http(s)?:\/\/x3078z8898\.zicp\.vip:7480\/upload\.php.*/i
+		},
+		{
+			name: 'dictest_edit',
+			regex: /http(s)?:\/\/x3078z8898\.zicp\.vip:7480\/torrents\.php\?action=editgroup&groupid=.*/i
+		},
+		{
+			name: 'dictest_request',
+			regex: /http(s)?:\/\/x3078z8898\.zicp\.vip:7480\/requests\.php\?action=new/i
+		},
+		{
+			name: 'dictest_request_edit',
+			regex: /http(s)?:\/\/x3078z8898\.zicp\.vip:7480\/requests\.php\?action=edit&id=.*/i
+		},
+		{
+			name: 'dictest_torrent_overview',
+			regex: /http(s)?:\/\/x3078z8898\.zicp\.vip:7480\/torrents\.php\?id=.*/i
+		},
+		{
 			name: 'waffles_upload',
 			regex: /http(s)?:\/\/(.*\.)?waffles\.ch\/upload\.php.*/i
 		},
@@ -1175,6 +1198,8 @@ factory = {
 				'nwcd_request',
 				'dic_upload',
 				'dic_request',
+                'dictest_upload',
+				'dictest_request',
 				'waffles_upload',
 				'waffles_upload_new',
 				'waffles_request',
@@ -1675,6 +1700,7 @@ factory = {
 			case 'nwcd_upload':
 			case 'ops_upload':
 			case 'dic_upload':
+            case 'dictest_upload':
 			case 'd3si_upload':
 			case 'pth_upload': {
 				const tr = document.createElement('tr');
@@ -1695,6 +1721,7 @@ factory = {
 			case 'nwcd_edit':
 			case 'ops_edit':
 			case 'dic_edit':
+            case 'dictest_edit':
 			case 'd3si_edit':
 			case 'pth_edit': {
 				const div = document.createElement('div');
@@ -1720,6 +1747,7 @@ factory = {
 			case 'nwcd_torrent_overview':
 			case 'ops_torrent_overview':
 			case 'dic_torrent_overview':
+            case 'dictest_torrent_overview':
 			case 'd3si_torrent_overview':
 			case 'pth_torrent_overview': {
 				const div = document.createElement('div');
@@ -1747,6 +1775,8 @@ factory = {
 			case 'ops_request_edit':
 			case 'dic_request':
 			case 'dic_request_edit':
+            case 'dictest_request':
+			case 'dictest_request_edit':
 			case 'd3si_request':
 			case 'd3si_request_edit':
 			case 'pth_request':
@@ -1825,6 +1855,7 @@ factory = {
 			case 'nwcd_upload':
 			case 'ops_upload':
 			case 'dic_upload':
+            case 'dictest_upload':
 			case 'd3si_upload':
 			case 'pth_upload': {
 				const yearTr = document.querySelector('#year_tr');
@@ -1835,6 +1866,7 @@ factory = {
 			case 'nwcd_edit':
 			case 'ops_edit':
 			case 'dic_edit':
+            case 'dictest_edit':
 			case 'd3si_edit':
 			case 'pth_edit': {
 				const [summaryInput] = document.getElementsByName('summary');
@@ -1848,6 +1880,7 @@ factory = {
 			case 'nwcd_torrent_overview':
 			case 'ops_torrent_overview':
 			case 'dic_torrent_overview':
+            case 'dictest_torrent_overview':
 			case 'd3si_torrent_overview':
 			case 'pth_torrent_overview': {
 				const [addArtistsBox] = document.querySelectorAll('.box_addartists');
@@ -1864,6 +1897,8 @@ factory = {
 			case 'ops_request_edit':
 			case 'dic_request':
 			case 'dic_request_edit':
+            case 'dictest_request':
+			case 'dictest_request_edit':
 			case 'd3si_request':
 			case 'd3si_request_edit':
 			case 'pth_request':
@@ -1916,6 +1951,7 @@ factory = {
 			case 'nwcd_upload':
 			case 'ops_upload':
 			case 'dic_upload':
+            case 'dictest_upload':
 			case 'd3si_upload':
 			case 'pth_upload':
 				if (factory.getDescriptionTargetSelect().value === 'album') {
@@ -1938,6 +1974,7 @@ factory = {
 			case 'nwcd_edit':
 			case 'ops_edit':
 			case 'dic_edit':
+            case 'dictest_edit':
 			case 'd3si_edit':
 			case 'pth_edit':
 				return document.getElementsByName('body')[0];
@@ -1945,6 +1982,7 @@ factory = {
 			case 'nwcd_torrent_overview':
 			case 'ops_torrent_overview':
 			case 'dic_torrent_overview':
+            case 'dictest_torrent_overview':
 			case 'd3si_torrent_overview':
 			case 'pth_torrent_overview':
 				if (!{}.hasOwnProperty.call(this, 'dummybox')) {
@@ -1959,6 +1997,8 @@ factory = {
 			case 'ops_request_edit':
 			case 'dic_request':
 			case 'dic_request_edit':
+            case 'dictest_request':
+			case 'dictest_request_edit':
 			case 'd3si_request':
 			case 'd3si_request_edit':
 			case 'pth_request':
@@ -2436,7 +2476,7 @@ factory = {
 
 				return f;
 			}
-
+            case 'dictest_upload':
 			case 'dic_upload': {
 				// eslint-disable-next-line complexity
 				const f = function (rawData) {
@@ -2593,6 +2633,7 @@ factory = {
 			case 'nwcd_edit':
 			case 'ops_edit':
 			case 'dic_edit':
+            case 'dictest_edit':
 			case 'd3si_edit':
 			case 'pth_edit': {
 				const f = function (rawData) {
@@ -2635,7 +2676,8 @@ factory = {
 
 			case 'nwcd_torrent_overview':
 			case 'ops_torrent_overview':
-			case 'dic_torrent_overview':
+            case 'dic_torrent_overview':
+			case 'dictest_torrent_overview':
 			case 'd3si_torrent_overview':
 			case 'pth_torrent_overview': {
 				const f = function (rawData) {
@@ -2698,6 +2740,8 @@ factory = {
 			case 'ops_request_edit':
 			case 'dic_request':
 			case 'dic_request_edit':
+            case 'dictest_request':
+			case 'dictest_request_edit':
 			case 'd3si_request':
 			case 'd3si_request_edit':
 			case 'pth_request':
